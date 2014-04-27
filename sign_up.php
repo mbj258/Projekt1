@@ -19,8 +19,8 @@ $DB = new PDO('oci:dbname=//localhost:1521/dbwc', xgp298, 123);
 
 // SQL statement to insert users
 
-$sql = "INSERT INTO USERS (Name, Sex, Email, Phone, Address, Lvl) 
-        VALUES ('firstname' 'lastname','Male','username', 'Phone', 'Address', 'Lvl)";
+$sql = "INSERT INTO USERS (Name, Sex, Email, Phone, Address, Lvl, pwd) 
+        VALUES ('firstname' 'lastname','Male','username', 'Phone', 'Address', 'Lvl', 'pwd')";
 
 ?>
 
@@ -28,7 +28,7 @@ $sql = "INSERT INTO USERS (Name, Sex, Email, Phone, Address, Lvl)
 
 <div style='float: right;'>
   <form action="sign_up.php">
-    <a href="sign_up.php"> <input type="submit" value="Sign up"> </a>
+    <a href="sign_up.php"> <input type="submit" value="Registrer"> </a>
   </form>
 </div>
 
@@ -36,7 +36,7 @@ $sql = "INSERT INTO USERS (Name, Sex, Email, Phone, Address, Lvl)
 
 <div style='float: right;'>
   <form action="log_in.php">
-    <a href="log_in.php"> <input type="submit" value="Log in"> </a>
+    <a href="log_in.php"> <input type="submit" value="Log ind"> </a>
   </form>
 </div>
 

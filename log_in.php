@@ -23,14 +23,14 @@ $DB = new PDO('oci:dbname=//localhost:1521/dbwc', xgp298, 123);
 
 <div style='float: right;'>
   <form action="sign_up.php">
-    <a href="sign_up.php"> <input type="submit" value="Sign up"> </a>
+    <a href="sign_up.php"> <input type="submit" value="Registrer"> </a>
   </form>
 </div>
 
 <!-- Log in button -->
 <div style='float: right;'>
   <form action="log_in.php">
-    <a href="log_in.php"> <input type="submit" value="Log in"> </a>
+    <a href="log_in.php"> <input type="submit" value="Log ind"> </a>
   </form>
 </div>
 
