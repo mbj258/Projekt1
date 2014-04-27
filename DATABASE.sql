@@ -1,9 +1,9 @@
 DROP TABLE USERS ;
 CREATE TABLE USERS (
-	Name VARCHAR(128), Sex VARCHAR(64), 
+	Name VARCHAR(128), Password VARCHAR(128), Sex VARCHAR(64), 
 	Email VARCHAR(128), Phone INTEGER, 
 	Address VARCHAR(128), Lvl INTEGER,
-	PRIMARY KEY(Name, Email)
+	PRIMARY KEY(Email)
 );
 
 
@@ -13,4 +13,4 @@ CREATE TABLE TEAMS (
 	HID VARCHAR(256) PRIMARY KEY
 );
 
-INSERT INTO USERS (Name, Sex, Email, Phone, Address, Lvl) VALUES ('Tobias','Male','tobiascarlostv@gmail.com', 53321818, 'Tagensvej 32, 3. TH', 5);
+INSERT INTO USERS (Name, Password, Sex, Email, Phone, Address, Lvl) VALUES ('Tobias', 'password', 'Male','tobiascarlostv@gmail.com', 53321818, 'Tagensvej 32, 3. TH', 5);
