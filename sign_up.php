@@ -16,12 +16,6 @@ $DB = new PDO('oci:dbname=//localhost:1521/dbwc', xgp298, 123);
     print "Error!: " . $e->getMessage() . "<br/>";
 }
 
-
-// SQL statement to insert users
-
-$sql = "INSERT INTO USERS (Name, Sex, Email, Phone, Address, Lvl, pwd) 
-        VALUES ('firstname' 'lastname','Male','username', 'Phone', 'Address', 'Lvl', 'pwd')";
-
 ?>
 
 <!-- Sign up button -->
@@ -39,11 +33,6 @@ $sql = "INSERT INTO USERS (Name, Sex, Email, Phone, Address, Lvl, pwd)
     <a href="log_in.php"> <input type="submit" value="Log ind"> </a>
   </form>
 </div>
-
-
-<!-- Form begins-->
-
-<form action="sign_up.php" method="post">
 
 <!-- Header -->
     <div class="top_part">
@@ -64,20 +53,84 @@ $sql = "INSERT INTO USERS (Name, Sex, Email, Phone, Address, Lvl, pwd)
     </div>
 <br>
 
+  <?php
+
+  //define variables and set to empty values
+  $name = $email = $gender = $pass1 = $pass2 = "";
+  $nameErr = $emailErr = $genderErr = $pass1Err = $pass2Err = "";
+
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+    if (empty($_POST["name"])) {
+      $nameErr = "Navn skal indtastes";
+    } else {
+      $name = test_input($_POST["name"]);
+    }
+
+    if (empty($_POST["email"])) {
+      $emailErr = "Email skal indtastes";
+    } else {
+      $email = test_input($_POST["email"]);
+    }
+
+    if (empty($_POST["gender"])) {
+      $genderErr = "Køn skal angives";
+    } else {
+      $gender = test_input($_POST["gender"]);
+    }
+
+    if (empty($_POST["pass1"])) {
+      $pass1Err = "Angiv venligst et kodeord";
+    } else {
+      $pass1 = test_input($_POST["pass1"]);
+    }
+
+    if (empty($_POST["pass2"])) {
+      $pass2Err = "Bekræft venligst kodeord";
+    } else {
+      $pass2 = test_input($_POST["pass2"]);
+    }
+    
+    if ($pass1 != $pass2) {
+      $passErr = "Kodeord matcher ikke";
+    } else {
+
+    }
+  }
+
+  function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+  }
+
+  ?>
+
+<!-- Form begins-->
+
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+
 <!-- First box -->
 <div id = "firstTable">
 <fieldset>
     <legend>Personlig Info</legend>
     <table cellpadding="3">
-      <tr><td width="150px"><input type ="radio" class="radio" name ="Sex" value="Woman">Kvinde<br>
-      <input type ="radio" name ="Sex" value="Man">Mand
-      <tr><td><strong>Email*:</strong></td><td><input type="text" name="username"></td></tr>
-      <tr><td><strong>Fornavn*:</strong></td><td><input type="text" name="firstname"></td></tr>
-      <tr><td><strong>Efternavn*:</strong></td><td><input type="text" name="lastname"></td></tr>
-      <tr><td><strong>Kodeord*:</strong></td><td><input type="password" name="pwd"></td></tr>
-      <tr><td><strong>Bekræft kodeord*:</strong></td><td><input type="password" name="confirmPwd"></td></tr>
+      <tr><td><strong>Navn:</strong></td><td><input type="text" name="name" value=<?php echo $name;?>></td><td><span class="error">* <?php echo $nameErr;?></span>
+</td></tr>
+      <tr><td><strong>Email:</strong></td><td><input type="text" name="email" value=<?php echo $email;?>></td><td><span class="error">* <?php echo $emailErr;?></span>
+</td></tr>
+      <tr><td width="150px"><input type ="radio" class="radio" name ="gender" <?php if (isset($gender) && $gender=="female") echo "checked";?> value="female">Kvinde
+                            <input type ="radio" class="radio" name ="gender" <?php if (isset($gender) && $gender=="male") echo "checked";?> value="male">Mand</td><td><span class="error">* <?php echo $genderErr;?></span>
+</td></tr>
+      <tr><td><strong>Kodeord:</strong></td><td><input type="password" name="pass1" value=<?php echo $pass1;?>></td><td><span class="error">* <?php echo $pass1Err;?></span>
+</td></tr>
+      <tr><td><strong>Bekræft kodeord:</strong></td><td><input type="password" name="pass2" value=<?php echo $pass2;?>></td><td><span class="error">* <?php echo $pass2Err;?></span>
+</td></tr>
+      <tr><td><span class="error"><?php echo $passErr;?></span></td></tr>
     </table>
 </fieldset>
+
 
 <!-- Second box -->
 <fieldset>
@@ -90,37 +143,91 @@ $sql = "INSERT INTO USERS (Name, Sex, Email, Phone, Address, Lvl, pwd)
         <tr><td><strong>By:</strong></td><td><input type="text" name="cityname"></td></tr>
         <tr><td><strong>Postnummer:</strong></td><td><input type="text" name="zipcode"></td></tr>
     </table>
-    </fieldset>
+</fieldset>
 
 <!-- Terms and Conditions -->
 <fieldset style="text-align: center">
     <legend>Vilkår & betingelser</legend>
 
-    <textarea disabled cols="50" rows="5" class="lock">Du en nub</textarea>
+    <textarea disabled cols="50" rows="5" class="lock">Vilkår her</textarea>
     <br/>
     Jeg er enig i vilkår & betingelser <input type="checkbox" name="agreeWithTerms" value="Y">
     <br/><br/>
-    
-    <!-- Error catching -->
-    <?php
-      if(array_key_exists('cumulativeErrorMessage', $_POST) && $_POST['cumulativeErrorMessage'] != '') {
-    ?>
-    <fieldset style="color: #ff0000;">
-        <legend>There were errors</legend>
-        <?php echo $_POST['cumulativeErrorMessage']?>
-    </fieldset>
-    <?php
-      }
-    ?>
-    <br/>
+</fieldset>
 
     <!-- Submit button -->
+<<<<<<< HEAD
+<<<<<<< HEAD:sign_up-1.php
     <input type="submit" value="Registrer">
-
-    <!-- Redirection -->
-    <input type="hidden" name="errorUrl" value="sign_up.php?ID=error">
-    <input type="hidden" name="successUrl" value="front_page.php?ID=Name.Email">
-
 </form>
+=======
+    <input type="submit" name ="Registrer" value="Registrer">
+>>>>>>> e847cad373c337b52992edd15a1b6ba82780b25a:sign_up.php
+
+=======
+    <input type="submit" name ="Registrer" value="Registrer">
+>>>>>>> e847cad373c337b52992edd15a1b6ba82780b25a
+
+<<<<<<< HEAD:sign_up-1.php
+</div></form></li></ul></div>
+=======
+
+<<<<<<< HEAD
+=======
+
+>>>>>>> e847cad373c337b52992edd15a1b6ba82780b25a
+<?php
+$sex = $_POST['Sex'];
+$username = $_POST['username'];
+$firstname = $_POST['username'];
+$lastname = $_POST['username'];
+$pwd = $_POST['username'];
+$confirmPwd = $_POST['username'];
+
+
+if ($_POST['Registrer']) {
+if (isset($_POST['agreeWithTerms'])) {
+	if (isset($sex)) {
+		if (isset($username)){
+			if (isset($firstname)){
+				if (isset($lastname)){
+					if (isset($pwd)){
+						if (isset($confirmPwd)){
+	try {
+		$DB->beginTransaction();
+		$DB->exec("INSERT INTO USERS (Name, Password, Sex, Email, Phone, Address, Lvl) 
+				   VALUES ('$firstname $lastname', '$pwd', '$sex','$username', '$phonenumber', '$Address', '$lvl'");
+		$DB->commit();
+		echo "Velkommen i klubben!";
+		} catch(Exception $e) {
+          echo $e->getMessage();
+          $DB->rollback();
+		}
+	}
+	else {echo "Husk Bekræftning af kodeord!";}
+	}
+	else {echo "Husk kodeord!";}
+	}
+	else {echo "Husk Efternavn!";}
+	}
+	else {echo "Husk Fornavn!";}
+	}
+	else {echo "Husk Email!";}
+	}
+	else {echo "Er du mand eller kvinde?";}
+	}
+	else {echo "Husk at erklære dig enig i vilkår og betingelser";}
+}
+
+?>
+</form>
+
+
+
+
+<<<<<<< HEAD
+>>>>>>> e847cad373c337b52992edd15a1b6ba82780b25a:sign_up.php
+=======
+>>>>>>> e847cad373c337b52992edd15a1b6ba82780b25a
 </body>
 </html>

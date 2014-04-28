@@ -13,4 +13,4 @@ CREATE TABLE TEAMS (
 	HID VARCHAR(256) PRIMARY KEY
 );
 
-INSERT INTO USERS (Name, Password, Sex, Email, Phone, Address, Lvl) VALUES ('Tobias', 'password', 'Male','tobiascarlostv@gmail.com', 53321818, 'Tagensvej 32, 3. TH', 5);
+INSERT INTO USERS (Name, Password, Sex, Email, Phone, Address, Lvl) VALUES ('Tobias', '123', 'Male','tobiascarlostv@gmail.com', 53321818, 'Tagensvej 32, 3. TH', 5);
