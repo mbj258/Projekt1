@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <title>Sign up page</title>
-    <link rel="stylesheet" type="text/css" href="badminventon.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 
@@ -47,7 +47,7 @@ $sql = "INSERT INTO USERS (Name, Sex, Email, Phone, Address, Lvl, pwd)
 
 <!-- Header -->
     <div class="top_part">
-      <a href="badminventon.php"><img src="http://img.diytrade.com/cdimg/1910604/26033303/0/1337848169/12pcs_Shuttlecocks_Badminton_Sports_Training_Tournament.jpg" alt="logo"/></a> </br>
+      <a href="front_page.php"><img src="http://img.diytrade.com/cdimg/1910604/26033303/0/1337848169/12pcs_Shuttlecocks_Badminton_Sports_Training_Tournament.jpg" alt="logo"/></a> </br>
       <h1> Badminton Projekt</h1>
     </div>
 
@@ -55,7 +55,7 @@ $sql = "INSERT INTO USERS (Name, Sex, Email, Phone, Address, Lvl, pwd)
 <!-- Navbar -->
     <div id="navbar">
         <ul>
-            <li><a href="badminventon.php">Hjem</li></a>
+            <li><a href="front_page.php">Hjem</li></a>
             <li>Profil</li>
             <li>Grupper</li>
             <li>Events</li>
@@ -119,7 +119,7 @@ $sql = "INSERT INTO USERS (Name, Sex, Email, Phone, Address, Lvl, pwd)
 
     <!-- Redirection -->
     <input type="hidden" name="errorUrl" value="sign_up.php?ID=error">
-    <input type="hidden" name="successUrl" value="badminventon.php?ID=Name.Email">
+    <input type="hidden" name="successUrl" value="front_page.php?ID=Name.Email">
 
 </form>
 </body>

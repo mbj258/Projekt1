@@ -4,7 +4,7 @@
 <head>
 <meta charset = "utf-8"/>
   <title>Log in page</title>
-  <link rel="stylesheet" type="text/css" href="badminventon.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 
@@ -38,7 +38,7 @@ $DB = new PDO('oci:dbname=//localhost:1521/dbwc', xgp298, 123);
 
 <!-- Header -->
     <div class="top_part">
-      <a href="badminventon.php"><img src="http://img.diytrade.com/cdimg/1910604/26033303/0/1337848169/12pcs_Shuttlecocks_Badminton_Sports_Training_Tournament.jpg" alt="logo" /></a> </br>
+      <a href="front_page.php"><img src="http://img.diytrade.com/cdimg/1910604/26033303/0/1337848169/12pcs_Shuttlecocks_Badminton_Sports_Training_Tournament.jpg" alt="logo" /></a> </br>
       <h1> Badminton Projekt</h1>
     </div>
 
@@ -49,7 +49,7 @@ $DB = new PDO('oci:dbname=//localhost:1521/dbwc', xgp298, 123);
 
 <div id="navbar">
         <ul>
-            <li><a href="badminventon.php">Hjem</li></a>
+            <li><a href="front_page.php">Hjem</li></a>
             <li>Profil</li>
             <li>Grupper</li>
             <li>Events</li>
@@ -86,7 +86,7 @@ $DB = new PDO('oci:dbname=//localhost:1521/dbwc', xgp298, 123);
 
     <!-- Redirection -->
     <input type="hidden" name="errorUrl" value="log_in.php">
-    <input type="hidden" name="successUrl" value="badminventon.php">
+    <input type="hidden" name="successUrl" value="front_page.php">
 
 </form>
 </body>
