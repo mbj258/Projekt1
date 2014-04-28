@@ -68,8 +68,8 @@ $DB = new PDO('oci:dbname=//localhost:1521/dbwc', xgp298, 123);
       <tr><td><strong>Email*:</strong></td><td><input type="text" name="username"></td></tr>
       <tr><td><strong>Fornavn*:</strong></td><td><input type="text" name="firstname"></td></tr>
       <tr><td><strong>Efternavn*:</strong></td><td><input type="text" name="lastname"></td></tr>
-      <tr><td><strong>Kodeord*:</strong></td><td><input type="password" name="pwd"></td></tr>
-      <tr><td><strong>Bekræft kodeord*:</strong></td><td><input type="password" name="confirmPwd"></td></tr>
+      <tr><td><strong>Kodeord*:</strong></td><td><input type="password" name="pwd" maxlength="20"></td></tr>
+      <tr><td><strong>Bekræft kodeord*:</strong></td><td><input type="password" name="confirmPwd" maxlength="20"></td></tr>
     </table>
 </fieldset>
 
@@ -78,12 +78,12 @@ $DB = new PDO('oci:dbname=//localhost:1521/dbwc', xgp298, 123);
 <fieldset>
     <legend>Yderligere info</legend>
     <table cellpadding="3">
-        <tr><td width="150px"><strong>Telefon Nummer:</strong></td><td><input type="text" name="phonenumber"></td></tr>
+        <tr><td width="150px"><strong>Telefon Nummer:  +45</strong></td><td><input type="text" name="phonenumber" maxlength="8"></td></tr>
         <tr><td><strong>Gadenavn:</strong></td><td><input type="text" name="streetname"></td></tr>
         <tr><td><strong>Nummer:</strong></td><td><input type="text" name="streetnumber"></td></tr>
-        <tr><td><strong>Etage:</strong></td><td><input type="text" name="floor"></td></tr>
+        <tr><td><strong>Etage:</strong></td><td><input type="text" name="floor" maxlength="3"></td></tr>
         <tr><td><strong>By:</strong></td><td><input type="text" name="cityname"></td></tr>
-        <tr><td><strong>Postnummer:</strong></td><td><input type="text" name="zipcode"></td></tr>
+        <tr><td><strong>Postnummer:</strong></td><td><input type="text" name="zipcode" maxlength="4"></td></tr>
     </table>
     </fieldset>
 
@@ -114,53 +114,44 @@ $DB = new PDO('oci:dbname=//localhost:1521/dbwc', xgp298, 123);
 
     <!-- Redirection -->
     <input type="hidden" name="errorUrl" value="sign_up.php?ID=error">
-    <input type="hidden" name="successUrl" value="front_page.php?ID=Name.Email">
+    <input type="hidden" name="successUrl" value="front_page.php?ID=Email">
 
 
 <?php
 $sex = $_POST['Sex'];
 $username = $_POST['username'];
-$firstname = $_POST['username'];
-$lastname = $_POST['username'];
-$pwd = $_POST['username'];
-$confirmPwd = $_POST['username'];
+$firstname = $_POST['firstname'];
+$lastname = $_POST['lastname'];
+$pwd = $_POST['pwd'];
+$confirmPwd = $_POST['confirmPwd'];
 
 
-if ($_POST['Registrer']) {
+
+if (isset($_POST['Registrer'])) {
 if (isset($_POST['agreeWithTerms'])) {
-	if (isset($sex)) {
-		if (isset($username)){
-			if (isset($firstname)){
-				if (isset($lastname)){
-					if (isset($pwd)){
-						if (isset($confirmPwd)){
 	try {
 		$DB->beginTransaction();
 		$DB->exec("INSERT INTO USERS (Name, Password, Sex, Email, Phone, Address, Lvl) 
 				   VALUES ('$firstname $lastname', '$pwd', '$sex','$username', '$phonenumber', '$Address', '$lvl'");
 		$DB->commit();
 		echo "Velkommen i klubben!";
+    echo "$sex $username $firstname $lastname $pwd $confirmPwd";
 		} catch(Exception $e) {
           echo $e->getMessage();
           $DB->rollback();
 		}
 	}
-	else {echo "Husk Bekræftning af kodeord!";}
-	}
-	else {echo "Husk kodeord!";}
-	}
-	else {echo "Husk Efternavn!";}
-	}
-	else {echo "Husk Fornavn!";}
-	}
-	else {echo "Husk Email!";}
-	}
-	else {echo "Er du mand eller kvinde?";}
-	}
-	else {echo "Husk at erklære dig enig i vilkår og betingelser";}
 }
 
 ?>
+
+
+
+
+
+
+
+
 </form>
 
 
