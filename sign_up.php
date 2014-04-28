@@ -16,12 +16,6 @@ $DB = new PDO('oci:dbname=//localhost:1521/dbwc', xgp298, 123);
     print "Error!: " . $e->getMessage() . "<br/>";
 }
 
-
-// SQL statement to insert users
-
-$sql = "INSERT INTO USERS (Name, Sex, Email, Phone, Address, Lvl, pwd) 
-        VALUES ('firstname' 'lastname','Male','username', 'Phone', 'Address', 'Lvl', 'pwd')";
-
 ?>
 
 <!-- Sign up button -->
@@ -79,6 +73,7 @@ $sql = "INSERT INTO USERS (Name, Sex, Email, Phone, Address, Lvl, pwd)
     </table>
 </fieldset>
 
+
 <!-- Second box -->
 <fieldset>
     <legend>Yderligere info</legend>
@@ -115,12 +110,61 @@ $sql = "INSERT INTO USERS (Name, Sex, Email, Phone, Address, Lvl, pwd)
     <br/>
 
     <!-- Submit button -->
-    <input type="submit" value="Registrer">
+    <input type="submit" name ="Registrer" value="Registrer">
 
     <!-- Redirection -->
     <input type="hidden" name="errorUrl" value="sign_up.php?ID=error">
     <input type="hidden" name="successUrl" value="front_page.php?ID=Name.Email">
 
+
+<?php
+$sex = $_POST['Sex'];
+$username = $_POST['username'];
+$firstname = $_POST['username'];
+$lastname = $_POST['username'];
+$pwd = $_POST['username'];
+$confirmPwd = $_POST['username'];
+
+
+if ($_POST['Registrer']) {
+if (isset($_POST['agreeWithTerms'])) {
+	if (isset($sex)) {
+		if (isset($username)){
+			if (isset($firstname)){
+				if (isset($lastname)){
+					if (isset($pwd)){
+						if (isset($confirmPwd)){
+	try {
+		$DB->beginTransaction();
+		$DB->exec("INSERT INTO USERS (Name, Password, Sex, Email, Phone, Address, Lvl) 
+				   VALUES ('$firstname $lastname', '$pwd', '$sex','$username', '$phonenumber', '$Address', '$lvl'");
+		$DB->commit();
+		echo "Velkommen i klubben!";
+		} catch(Exception $e) {
+          echo $e->getMessage();
+          $DB->rollback();
+		}
+	}
+	else {echo "Husk Bekræftning af kodeord!";}
+	}
+	else {echo "Husk kodeord!";}
+	}
+	else {echo "Husk Efternavn!";}
+	}
+	else {echo "Husk Fornavn!";}
+	}
+	else {echo "Husk Email!";}
+	}
+	else {echo "Er du mand eller kvinde?";}
+	}
+	else {echo "Husk at erklære dig enig i vilkår og betingelser";}
+}
+
+?>
 </form>
+
+
+
+
 </body>
 </html>
