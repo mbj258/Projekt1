@@ -1,0 +1,151 @@
+header {
+    background-image: url(http://img.diytrade.com/cdimg/1910604/26033303/0/1337848169/12pcs_Shuttlecocks_Badminton_Sports_Training_Tournament.jpg);
+    height: 500px;
+}
+
+.top_part img {
+    float: left;
+    width: 80px;
+    height: 55;
+}
+
+.top_part h1 {
+    position: relative;
+    top: 5px;
+    left: 10px;
+	text-align: center;
+	font-style: Tahoma;
+	font-style: bold;
+
+}
+
+#overskrift {
+	float: center;
+	font-size: 50;
+	font-family: times black;
+	text-align: center;
+	background-image: "http://img.diytrade.com/cdimg/1910604/26033303/0/1337848169/12pcs_Shuttlecocks_Badminton_Sports_Training_Tournament.jpg";
+
+}
+#navbar {
+width:100%;
+height:30px;
+background-color:#c3dfef ;
+}
+
+#navbar ul {
+width:80%;
+margin:0 auto 0 auto;
+}
+
+#navbar ul li {
+float:left;
+color:#0000;
+padding:0 20px 0 20px;
+border-right:1px solid #FFF;
+border-left:1px solid #FFF;
+height:30px;
+list-style:none;
+display:block;
+line-height:30px;
+text-align:center;
+cursor:pointer;
+}
+
+#navbar ul li:hover {
+background-color:#CCC;
+}
+
+.col-wrapper{width:960px; margin:0 auto;}
+.col{margin:0 10px; float:left; display:inline;}
+.col-670{width:20%;}
+.col-250{width:20%;}
+
+#tfheader{
+		background-color:#c3dfef;
+	}
+	#tfnewsearch{
+		float:right;
+		padding:20px;
+	}
+	.tftextinput{
+		margin: 0;
+		padding: 5px 15px;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size:14px;
+		border:1px solid #0076a3; border-right:0px;
+		border-top-left-radius: 5px 5px;
+		border-bottom-left-radius: 5px 5px;
+	}
+	.tfbutton {
+		margin: 0;
+		padding: 5px 15px;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size:14px;
+		outline: none;
+		cursor: pointer;
+		text-align: center;
+		text-decoration: none;
+		color: #ffffff;
+		border: solid 1px #0076a3; border-right:0px;
+		background: #0095cd;
+		background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+		background: -moz-linear-gradient(top,  #00adee,  #0078a5);
+		border-top-right-radius: 5px 5px;
+		border-bottom-right-radius: 5px 5px;
+	}
+	.tfbutton:hover {
+		text-decoration: none;
+		background: #007ead;
+		background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
+		background: -moz-linear-gradient(top,  #0095cc,  #00678e);
+	}
+	/* Fixes submit button height problem in Firefox */
+	.tfbutton::-moz-focus-inner {
+	  border: 0;
+	}
+	.tfclear{
+		clear:both;
+	}
+
+	/* This is for the columns in "pictures" */
+
+	.cell {
+    width: 50%;
+    background: #c3dfef;
+    float: left;
+    margin-bottom: -1000px;
+    padding-bottom: 1000px;
+}
+
+.cell:nth-child(odd) { background: #F6E3CE; }
+
+.row { overflow: hidden; }
+
+.row:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.billeder {
+    position: relative;
+    float: left;
+    width: 300px;
+    height: 300px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#tis {
+	background: #90a090;
+	border-bottom: double 3px #aba;
+	border-left: solid 1px #9a9;
+	border-right: solid 1px #565;
+	border-top: solid 1px #9a9;
+	font: italic normal 230% 'Times New Roman', Times, serif;
+	letter-spacing: 0.2em;
+	margin: 0;
+	padding: 15px 10px 15px 60px;
+}

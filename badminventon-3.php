@@ -5,7 +5,7 @@
 <head>
 <meta charset = "utf-8">
   <title>Front page</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="badminventon.css">
 </head>
 
 <body>
@@ -37,6 +37,9 @@ $DB = new PDO('oci:dbname=//localhost:1521/dbwc', xgp298, 123);
   </form>
 </div>
 
+
+<!-- Her kalder jeg min css fil, så den kan bruges til at style elementer -->
+<link rel="stylesheet" type="text/css" href="badminventon.css">
 
 <!-- Header -->
 
