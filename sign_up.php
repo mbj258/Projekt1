@@ -70,6 +70,7 @@ $DB = new PDO('oci:dbname=//localhost:1521/dbwc', xgp298, 123);
       <tr><td><strong>Efternavn*:</strong></td><td><input type="text" name="lastname"></td></tr>
       <tr><td><strong>Kodeord*:</strong></td><td><input type="password" name="pwd" maxlength="20"></td></tr>
       <tr><td><strong>Bekræft kodeord*:</strong></td><td><input type="password" name="confirmPwd" maxlength="20"></td></tr>
+      <tr><td><strong>Færdighedsniveau (1-5)*:</strong></td><td><input type="text" name="Lvl" maxlength="1"></td></tr>
     </table>
 </fieldset>
 
@@ -124,15 +125,18 @@ $firstname = $_POST['firstname'];
 $lastname = $_POST['lastname'];
 $pwd = $_POST['pwd'];
 $confirmPwd = $_POST['confirmPwd'];
-
+$add = $_POST['streetname'];
+$phone = $_POST['phonenumber'];
+$level = $_POST['lvl'];
 
 
 if (isset($_POST['Registrer'])) {
 if (isset($_POST['agreeWithTerms'])) {
+  if($pwd == $confirmPwd){
 	try {
 		$DB->beginTransaction();
 		$DB->exec("INSERT INTO USERS (Name, Password, Sex, Email, Phone, Address, Lvl) 
-				   VALUES ('$firstname $lastname', '$pwd', '$sex','$username', '$phonenumber', '$Address', '$lvl'");
+				   VALUES ('$firstname $lastname', '$pwd', '$sex','$username', '$phone', '$add', '$level'");
 		$DB->commit();
 		echo "Velkommen i klubben!";
     echo "$sex $username $firstname $lastname $pwd $confirmPwd";
@@ -141,6 +145,8 @@ if (isset($_POST['agreeWithTerms'])) {
           $DB->rollback();
 		}
 	}
+  else echo "Din adgangskode matcher ikke";
+}
 }
 
 ?>
